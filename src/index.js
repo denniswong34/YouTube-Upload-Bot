@@ -15,6 +15,7 @@ async function Main() {
 				botSettings.videoFile,
 				videoSettings.title,
 				videoSettings.description,
+				'',
 				videoSettings.privacy,
 			);
 			console.log(

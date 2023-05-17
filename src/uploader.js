@@ -59,7 +59,7 @@ const Login = async (Email, Password) => {
 };
 
 // For uploading your video
-const UploadVideo = async (Video, Title, Description = '', privacy) => {
+const UploadVideo = async (Video, Title, Description = '', Thumbnail, privacy) => {
 	// guard clauses
 	if (!Video.length) {
 		throw new Error('Video source cannot be empty.');
@@ -110,6 +110,13 @@ const UploadVideo = async (Video, Title, Description = '', privacy) => {
 		await MainPage.keyboard.type(Description.substr(0, 100), { delay: 10 });
 		await Delay(1000);
 
+		//upload thumbnail
+		const thumbnailBox = await getElement(
+            '#file-loader',
+            MainPage,
+        );
+		await thumbnailInput.uploadFile(Thumbnail);
+		await Delay(500);
 		// Make it not for kids
 
 		const ageRestrictionEl = await getElement(
